@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h2>Registration Form</h2>
+        </div>
+        <form class="form" id="form">
+            <div class="formControl">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="username" placeholder="Eg. Bruce Wayne" autocomplete="off" onblur="validateName(this)">
+                <p id="nameError"></p>
+            </div>
+            <div class="formControl">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="Eg. name@domain.com" autocomplete="off" onblur="validateEmail(this)">
+                <p id="emailError"></p>
+            </div>
+            <div class="formControl">
+                <label for="phone">Contact Number:</label>
+                <input type="text" name="phone" id="phoneNo" placeholder="Eg. (123) 456-7890" autocomplete="off">
+                <p id="phoneError"></p>
+                <span id="sim"></span>
+                <span id="state"></span>
+            </div>
+            <input type="submit" value="submit" class="btn">
+        </form>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

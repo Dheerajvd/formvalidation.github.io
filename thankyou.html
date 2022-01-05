@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration SuccessFull</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="thankContainer">
+        <div class="paragraph">
+            <h1 id="userName">Dear, (name here) </h1>
+            <h2 id="numb">
+                Thank you for your inquiry. A 4 digit verification number has been sent to your phone number:(number
+                heare) please enter in the following box and submit for confirmation
+            </h2>
+            <label for="otp"> Enter OTP</label>
+            <input type="text" id="OTPNumber" maxlength="4" required autocomplete="OFF">
+            <small id="otperror"></small>
+            <button id="sub">Submit</button>
+        </div>
+
+    </div>
+
+
+    <script>
+        const userName = localStorage.getItem('useName');
+        const phoneNumber = localStorage.getItem('userNo');
+        const OTP = localStorage.getItem('OTP');
+        const h1 = document.getElementById('userName');
+        const h2 = document.getElementById('numb');
+        const finalbtn = document.getElementById('sub');
+        const otperror = document.getElementById('otperror');
+
+        console.log(OTP);
+
+        h1.innerText = `Dear, ${userName} `
+        h2.innerText = `Thank you for your inquiry. A 4 digit verification number has been sent to your phone number: ${phoneNumber} please enter in the following box and submit for confirmation`;
+
+
+        let initialCount = 3;
+        finalbtn.addEventListener('click', () => {
+            let a = initialCount--;
+            // console.log(a);
+            const OTPNumb = document.getElementById('OTPNumber').value;
+            // console.log(OTPNumb);
+            if (OTPNumb == OTP) {
+                alert('Registration Succesfull');
+                location.href = `http://pixel6.co/`;
+                setInterval(localStorage.clear(), 1000);
+            } else {
+                let attempts = a-1;
+                otperror.innerText = `Invalid OTP, ${attempts} attempts left.`
+                
+            }
+            if (a === 1) {
+                alert('Registration Unsuccesful');
+                location.href = `http://pixel6.co/dheeraj`
+            };
+        });
+
+        function phoneFormat(numb) {
+            numb = numb.replace(/\D/g, '');
+            
+            return numb;
+        }
+
+        document.getElementById('OTPNumber').addEventListener('keyup', () => {
+            let Num = document.getElementById('OTPNumber');
+            Num.value = phoneFormat(Num.value);
+        });
+
+    </script>
+</body>
+
+</html>
